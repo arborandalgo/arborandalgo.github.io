@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/base.astro";
+import { buildHomeJsonLd, SITE } from "../config/site";
 import Navbar from "../components/navbar.astro";
 import Hero from "../components/hero.astro";
 import Approach from "../components/approach.astro";
@@ -8,9 +9,20 @@ import Services from "../components/services.astro";
 import Standard from "../components/standard.astro";
 import Contact from "../components/contact.astro";
 import Footer from "../components/footer.astro";
+
+const pathname = "/";
+const title = SITE.defaultTitle;
+const description = SITE.defaultDescription;
+const siteUrl = Astro.site ?? new URL(SITE.url);
+const jsonLd = buildHomeJsonLd(siteUrl, title, description, pathname);
 ---
 
-<Base>
+<Base
+  title={title}
+  description={description}
+  pathname={pathname}
+  jsonLd={jsonLd}
+>
   <main class="page-grid">
     <Navbar />
     <Hero />

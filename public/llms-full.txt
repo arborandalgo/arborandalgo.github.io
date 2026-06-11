@@ -1,0 +1,31 @@
+# Arbor & Algo - Full LLM Profile
+
+## Summary
+Independent tech practice serving businesses across India with practical digital systems.
+
+## Core Services
+- Websites and web apps
+- Business automation
+- Integrations and tool connectivity
+- Tech advisory and architecture guidance
+
+## Typical Integrations
+- Payments: Razorpay
+- Logistics: Shiprocket
+- CRM and operations: Zoho
+- Messaging: WhatsApp Business API
+
+## Delivery Principles
+- Build on maintainable foundations
+- Favor simple and observable systems
+- Integrate with existing stacks before replacing them
+- Keep operational overhead low for small teams
+
+## Geographic Context
+- Mumbai
+- India-wide remote delivery
+
+## Contact
+- Email: hello@arborandalgo.com
+- Website: https://arborandalgo.com
+- GitHub: https://github.com/arborandalgo

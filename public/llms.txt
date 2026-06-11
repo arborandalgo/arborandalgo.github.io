@@ -1,0 +1,13 @@
+# Arbor & Algo
+> Independent tech practice — Mumbai. Websites, automation, integrations, and advisory.
+
+Full profile: /llms-full.txt
+
+## Services
+- Websites & web apps
+- Business automation
+- Integrations & connections
+- Tech advisory
+
+## Contact
+hello@arborandalgo.com

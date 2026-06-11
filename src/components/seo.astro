@@ -1,0 +1,89 @@
+---
+import { DEFAULT_OG_IMAGE, OG_IMAGE, SITE } from "../config/site";
+
+interface JsonLdNode {
+  [key: string]: unknown;
+}
+
+interface Props {
+  siteUrl: URL;
+  title?: string;
+  description?: string;
+  pathname?: string;
+  ogImage?: string;
+  type?: "website" | "article";
+  jsonLd?: JsonLdNode | JsonLdNode[];
+}
+
+const {
+  siteUrl,
+  title = SITE.defaultTitle,
+  description = SITE.defaultDescription,
+  pathname = "/",
+  ogImage = DEFAULT_OG_IMAGE,
+  type = "website",
+  jsonLd,
+} = Astro.props;
+
+const canonicalUrl = new URL(pathname, siteUrl).toString();
+const imageUrl = ogImage.startsWith("http")
+  ? ogImage
+  : new URL(ogImage, siteUrl).toString();
+
+const ldJson = jsonLd ? JSON.stringify(jsonLd) : null;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="theme-color" content="#ffffff" />
+
+<link rel="canonical" href={canonicalUrl} />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+<link
+  rel="alternate"
+  type="text/plain"
+  href="/llms-full.txt"
+  title="LLMs Full"
+/>
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1A1A18" />
+
+<meta name="author" content={SITE.author} />
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
+<meta
+  name="googlebot"
+  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
+
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+{
+  SITE.localeAlternates.map((localeCode) => (
+    <meta property="og:locale:alternate" content={localeCode} />
+  ))
+}
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={OG_IMAGE.alt} />
+<meta property="og:image:width" content={String(OG_IMAGE.width)} />
+<meta property="og:image:height" content={String(OG_IMAGE.height)} />
+<meta property="og:image:type" content={OG_IMAGE.type} />
+<meta property="article:publisher" content={SITE.publisherUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+{ldJson && <script type="application/ld+json" set:html={ldJson} />}
