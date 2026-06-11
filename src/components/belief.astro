@@ -1,0 +1,39 @@
+---
+const beliefs = [
+  {
+    mark: "Roots",
+    heading: "Business context over feature checklists.",
+    body: "Decisions are grounded in your goals, constraints, and customer reality, not a generic stack template.",
+  },
+  {
+    mark: "Trunk",
+    heading: "Clarity is a quality requirement.",
+    body: "Architecture, naming, and boundaries are kept understandable so the system remains usable long after launch.",
+  },
+  {
+    mark: "Canopy",
+    heading: "Ownership should stay with your team.",
+    body: "The end result is designed to be maintainable and transferable, so you are never locked to one developer.",
+  },
+];
+---
+
+<section class="split-section animate-rise delay-2">
+  <p class="section-label">Belief</p>
+
+  <div class="section-content">
+    <div class="belief-list">
+      {
+        beliefs.map(({ mark, heading, body }) => (
+          <article class="belief-item">
+            <h3>
+              <span>{mark}</span>
+              {heading}
+            </h3>
+            <p>{body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

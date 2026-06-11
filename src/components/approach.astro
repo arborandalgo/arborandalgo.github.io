@@ -1,0 +1,33 @@
+---
+const points = [
+  {
+    title: "Clear architecture",
+    body: "The build starts from your business model, then maps to systems that remain understandable as the team grows.",
+  },
+  {
+    title: "Practical handoff",
+    body: "Everything is shipped with enough structure and context for future developers to continue confidently.",
+  },
+  {
+    title: "Focused collaboration",
+    body: "I keep client load intentionally small, so decisions are deliberate and communication stays direct.",
+  },
+];
+---
+
+<section id="approach" class="split-section animate-rise delay-2">
+  <p class="section-label">Approach</p>
+
+  <div class="section-content">
+    <div class="approach-grid">
+      {
+        points.map(({ title, body }) => (
+          <article class="approach-item">
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

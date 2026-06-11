@@ -1,0 +1,92 @@
+---
+const links = [
+  { label: "What we build", href: "#services" },
+  { label: "How we work", href: "#process" },
+  { label: "Get in touch", href: "#contact" },
+];
+---
+
+<header class="navbar animate-rise">
+  <a href="/" class="brand">
+    <img src="/logo.svg" alt="Arbor & Algo" width="32" height="32" />
+    <span>Arbor & Algo</span>
+  </a>
+
+  <button
+    type="button"
+    class="menu-toggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="primary-navigation"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="primary-navigation" aria-label="Primary navigation">
+    <ul class="menu">
+      {
+        links.map(({ label, href }) => (
+          <li>
+            <a href={href}>{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const initNavbar = () => {
+    const navbarNode = document.querySelector(".navbar");
+    if (!(navbarNode instanceof HTMLElement)) return;
+    const navbar = navbarNode;
+    const toggle = navbar.querySelector(".menu-toggle");
+    const menuLinks = navbar.querySelectorAll('a[href^="#"]');
+
+    const navGap = 18;
+    if (toggle instanceof HTMLButtonElement) {
+      toggle.addEventListener("click", () => {
+        const isOpen = navbar.classList.toggle("menu-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu",
+        );
+      });
+    }
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        event.preventDefault();
+        const top =
+          target.getBoundingClientRect().top +
+          window.scrollY -
+          navbar.offsetHeight -
+          navGap;
+
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        history.replaceState(null, "", href);
+        navbar.classList.remove("menu-open");
+
+        if (toggle instanceof HTMLButtonElement) {
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open navigation menu");
+        }
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNavbar, { once: true });
+  } else {
+    initNavbar();
+  }
+</script>

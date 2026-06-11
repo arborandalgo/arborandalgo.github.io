@@ -1,0 +1,39 @@
+---
+const steps = [
+  {
+    mark: "Root",
+    title: "Discovery and scoping",
+    body: "We define the problem, users, and success criteria, then map what should be built now versus later.",
+  },
+  {
+    mark: "Structure",
+    title: "Blueprint and sequencing",
+    body: "You get a practical implementation plan with milestones, trade-offs, and estimates before development begins.",
+  },
+  {
+    mark: "Grow",
+    title: "Build, verify, handoff",
+    body: "The system is delivered with testing, documentation, and transition support so your team can operate it independently.",
+  },
+];
+---
+
+<section id="process" class="split-section animate-rise">
+  <p class="section-label">How it works</p>
+
+  <div class="section-content">
+    <ul class="process-list">
+      {
+        steps.map(({ mark, title, body }, i) => (
+          <li class="process-item" style={`animation-delay:${0.08 * (i + 1)}s`}>
+            <strong>{mark}</strong>
+            <div>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

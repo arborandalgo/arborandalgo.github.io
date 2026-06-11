@@ -1,0 +1,42 @@
+---
+const services = [
+  {
+    title: "Websites & web apps",
+    body: "A professional digital home for your business, or a full product your customers use every day. Built to perform and simple to manage.",
+    eg: "e.g. booking systems, service portals, dashboards",
+  },
+  {
+    title: "Business automation",
+    body: "The repetitive work that eats your week handled by systems that run quietly in the background. You focus on the business, not the admin.",
+    eg: "e.g. invoicing, inventory, lead tracking",
+  },
+  {
+    title: "Integrations & connections",
+    body: "Your existing tools talking to each other instead of working in silos. Payments, logistics, messaging, CRM. No platform overhaul needed.",
+    eg: "e.g. Razorpay, Shiprocket, Zoho, WhatsApp",
+  },
+  {
+    title: "Tech advisory",
+    body: "Not sure where to start or whether what you have is working? I will help you see clearly and choose the right path before spending on the wrong one.",
+    eg: "e.g. audits, roadmaps, vendor guidance",
+  },
+];
+---
+
+<section id="services" class="split-section animate-rise delay-3">
+  <p class="section-label">What I build</p>
+
+  <div class="section-content">
+    <div class="services-grid">
+      {
+        services.map(({ title, body, eg }) => (
+          <article class="service-card">
+            <h3>{title}</h3>
+            <p>{body}</p>
+            <small>{eg}</small>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
